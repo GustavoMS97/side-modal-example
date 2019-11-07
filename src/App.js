@@ -13,6 +13,8 @@ import {
 } from "@material-ui/core";
 import { Close } from "@material-ui/icons";
 import { withStyles } from "@material-ui/core/styles";
+import Skeleton from "react-loading-skeleton";
+import Table from "./Table";
 
 const styles = {
     paper: {
@@ -32,7 +34,62 @@ function Transition(props) {
 
 class App extends React.Component {
     state = {
-        open: false
+        open: false,
+        selected: [],
+        data: [
+            {
+                id: 2,
+                name: "Cupcake",
+                calories: 305,
+                fat: 3.7,
+                carbs: 67,
+                protein: 4.3
+            },
+            {
+                id: 3,
+                name: "Cupcake 2",
+                calories: 306,
+                fat: 3.8,
+                carbs: 68,
+                protein: 4.4
+            },
+            {
+                id: 4,
+                name: "Cupcake",
+                calories: 305,
+                fat: 3.7,
+                carbs: 67,
+                protein: 4.3
+            },
+            {
+                id: 5,
+                name: "Cupcake 2",
+                calories: 306,
+                fat: 3.8,
+                carbs: 68,
+                protein: 4.4
+            },
+            {
+                id: 6,
+                name: "Cupcake",
+                calories: 305,
+                fat: 3.7,
+                carbs: 67,
+                protein: 4.3
+            },
+            {
+                id: 7,
+                name: "Cupcake 2",
+                calories: 306,
+                fat: 3.8,
+                carbs: 68,
+                protein: 4.4
+            }
+        ],
+        order: "asc",
+        orderBy: "calories",
+        page: 0,
+        rowsPerPage: 5
     };
 
     handleClickOpen = () => {
@@ -59,6 +116,7 @@ class App extends React.Component {
                 >
                     Open responsive dialog
                 </Button>
+                <Skeleton count={5} />
                 <Dialog
                     fullScreen={fullScreen}
                     classes={{ paper }}
@@ -87,7 +145,9 @@ class App extends React.Component {
                             <Close />
                         </IconButton>
                         <Typography variant="h6" color="inherit">
-                            {"Use Google's location service? Use Google's location service? Use Google's location service?"}
+                            {
+                                "Use Google's location service? Use Google's location service? Use Google's location service?"
+                            }
                         </Typography>
                     </div>
                     <DialogContent>
@@ -110,6 +170,7 @@ class App extends React.Component {
                         </Button>
                     </DialogActions>
                 </Dialog>
+                <Table />
             </div>
         );
     }
