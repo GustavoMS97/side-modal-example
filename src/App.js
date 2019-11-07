@@ -6,10 +6,12 @@ import {
     DialogActions,
     DialogContent,
     DialogContentText,
-    DialogTitle,
     withMobileDialog,
-    Slide
+    Slide,
+    IconButton,
+    Typography
 } from "@material-ui/core";
+import { Close } from "@material-ui/icons";
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = {
@@ -20,7 +22,8 @@ const styles = {
         position: "absolute",
         minWidth: "50% !important",
         margin: 0
-    }
+    },
+    root: { maxWidth: "50% !important" }
 };
 
 function Transition(props) {
@@ -66,9 +69,27 @@ class App extends React.Component {
                     onClose={this.handleClose}
                     aria-labelledby="responsive-dialog-title"
                 >
-                    <DialogTitle id="responsive-dialog-title">
-                        {"Use Google's location service?"}
-                    </DialogTitle>
+                    <div
+                        style={{
+                            background: "#1976D2",
+                            color: "white",
+                            display: "flex",
+                            alignItems: "center",
+                            flexDirection: "row",
+                            marginBottom: "20px"
+                        }}
+                    >
+                        <IconButton
+                            color="inherit"
+                            onClick={this.handleClose}
+                            aria-label="Close"
+                        >
+                            <Close />
+                        </IconButton>
+                        <Typography variant="h6" color="inherit">
+                            {"Use Google's location service? Use Google's location service? Use Google's location service?"}
+                        </Typography>
+                    </div>
                     <DialogContent>
                         <DialogContentText>
                             Let Google help apps determine location. This means
